@@ -4325,8 +4325,8 @@
       "modified": false
    },
    {
-      "id": "create succeeded",
-      "translation": "create succeeded",
+      "id": "{{.OperationType}} succeeded",
+      "translation": "{{.OperationType}} succeeded",
       "modified": false
    },
    {
@@ -4410,8 +4410,8 @@
       "modified": false
    },
    {
-      "id": "create failed",
-      "translation": "create failed",
+      "id": "{{.OperationType}} failed",
+      "translation": "{{.OperationType}} failed",
       "modified": false
    },
    {
@@ -4705,8 +4705,8 @@
       "modified": false
    },
    {
-      "id": "create in progress",
-      "translation": "create in progress",
+      "id": "{{.OperationType}} in progress",
+      "translation": "{{.OperationType}} in progress",
       "modified": false
    },
    {

@@ -3740,8 +3740,8 @@
       "modified": false
    },
    {
-      "id": "Status: {{.Status}}",
-      "translation": "Status: {{.Status}}",
+      "id": "State: {{.State}}",
+      "translation": "État: {{.State}}",
       "modified": false
    },
    {
@@ -4326,7 +4326,7 @@
    },
    {
       "id": "{{.OperationType}} succeeded",
-      "translation": "{{.OperationType}} succeeded",
+      "translation": "{{.OperationType}} succès",
       "modified": false
    },
    {
@@ -4411,7 +4411,7 @@
    },
    {
       "id": "{{.OperationType}} failed",
-      "translation": "{{.OperationType}} failed",
+      "translation": "{{.OperationType}} erreur",
       "modified": false
    },
    {
@@ -4675,11 +4675,6 @@
       "modified": false
    },
    {
-      "id": "state",
-      "translation": "état",
-      "modified": false
-   },
-   {
       "id": "status",
       "translation": "statut",
       "modified": false
@@ -4706,7 +4701,7 @@
    },
    {
       "id": "{{.OperationType}} in progress",
-      "translation": "{{.OperationType}} in progress",
+      "translation": "{{.OperationType}} en progrès",
       "modified": false
    },
    {
@@ -4857,6 +4852,21 @@
    {
       "id": "{{.Usage}} {{.FormattedMemory}} x {{.InstanceCount}} instances",
       "translation": "{{.Usage}} {{.FormattedMemory}} x {{.InstanceCount}} instances",
+      "modified": false
+   },
+   {
+      "id": "Last Operation",
+      "translation": "La Dernierre Opération",
+      "modified": false
+   },
+   {
+      "id": "last operation",
+      "translation": "la dernierre opération",
+      "modified": false
+   },
+   {
+      "id": "state",
+      "translation": "state",
       "modified": false
    }
 ]

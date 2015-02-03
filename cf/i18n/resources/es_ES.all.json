@@ -4495,21 +4495,6 @@
       "modified": false
    },
    {
-      "id": "create failed",
-      "translation": "create failed",
-      "modified": false
-   },
-   {
-      "id": "create in progress",
-      "translation": "create in progress",
-      "modified": false
-   },
-   {
-      "id": "create succeeded",
-      "translation": "create succeeded",
-      "modified": false
-   },
-   {
       "id": "description",
       "translation": "descripcion",
       "modified": false

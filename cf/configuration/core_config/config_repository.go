@@ -51,6 +51,7 @@ type Reader interface {
 	UserEmail() string
 	IsLoggedIn() bool
 	IsSSLDisabled() bool
+	IsMinApiVersion(string) bool
 
 	AsyncTimeout() uint
 	Trace() string
@@ -58,6 +59,8 @@ type Reader interface {
 	ColorEnabled() string
 
 	Locale() string
+
+	PluginRepos() []models.PluginRepo
 }
 
 type ReadWriter interface {
@@ -77,6 +80,8 @@ type ReadWriter interface {
 	SetTrace(string)
 	SetColorEnabled(string)
 	SetLocale(string)
+	SetPluginRepo(models.PluginRepo)
+	UnSetPluginRepo(int)
 }
 
 type Repository interface {
@@ -245,6 +250,14 @@ func (c *ConfigRepository) IsSSLDisabled() (isSSLDisabled bool) {
 	return
 }
 
+func (c *ConfigRepository) IsMinApiVersion(v string) bool {
+	var apiVersion string
+	c.read(func() {
+		apiVersion = c.data.ApiVersion
+	})
+	return apiVersion >= v
+}
+
 func (c *ConfigRepository) AsyncTimeout() (timeout uint) {
 	c.read(func() {
 		timeout = c.data.AsyncTimeout
@@ -269,6 +282,13 @@ func (c *ConfigRepository) ColorEnabled() (enabled string) {
 func (c *ConfigRepository) Locale() (locale string) {
 	c.read(func() {
 		locale = c.data.Locale
+	})
+	return
+}
+
+func (c *ConfigRepository) PluginRepos() (repos []models.PluginRepo) {
+	c.read(func() {
+		repos = c.data.PluginRepos
 	})
 	return
 }
@@ -365,5 +385,17 @@ func (c *ConfigRepository) SetColorEnabled(enabled string) {
 func (c *ConfigRepository) SetLocale(locale string) {
 	c.write(func() {
 		c.data.Locale = locale
+	})
+}
+
+func (c *ConfigRepository) SetPluginRepo(repo models.PluginRepo) {
+	c.write(func() {
+		c.data.PluginRepos = append(c.data.PluginRepos, repo)
+	})
+}
+
+func (c *ConfigRepository) UnSetPluginRepo(index int) {
+	c.write(func() {
+		c.data.PluginRepos = append(c.data.PluginRepos[:index], c.data.PluginRepos[index+1:]...)
 	})
 }

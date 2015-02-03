@@ -220,7 +220,7 @@ var _ = Describe("start command", func() {
 			Expect(ui.FailedWithUsage).To(BeTrue())
 		})
 
-		It("uses uses proper org name and space name", func() {
+		It("uses proper org name and space name", func() {
 			config := testconfig.NewRepositoryWithDefaults()
 			displayApp := &testcmd.FakeAppDisplayer{}
 			appRepo := &testApplication.FakeApplicationRepository{}
@@ -398,6 +398,91 @@ var _ = Describe("start command", func() {
 					[]string{"0 of 2 instances running", "1 starting", "1 failing"},
 					[]string{"FAILED"},
 					[]string{"Start unsuccessful"},
+				))
+			})
+		})
+
+		Context("when an app instance is crashed", func() {
+			It("fails and alerts the user", func() {
+				displayApp := &testcmd.FakeAppDisplayer{}
+				appInstance := models.AppInstanceFields{}
+				appInstance.State = models.InstanceStarting
+				appInstance2 := models.AppInstanceFields{}
+				appInstance2.State = models.InstanceStarting
+				appInstance3 := models.AppInstanceFields{}
+				appInstance3.State = models.InstanceStarting
+				appInstance4 := models.AppInstanceFields{}
+				appInstance4.State = models.InstanceCrashed
+				defaultInstanceResponses = [][]models.AppInstanceFields{
+					[]models.AppInstanceFields{appInstance, appInstance2},
+					[]models.AppInstanceFields{appInstance3, appInstance4},
+				}
+
+				defaultInstanceErrorCodes = []string{"", ""}
+
+				ui, _, _ := startAppWithInstancesAndErrors(displayApp, defaultAppForStart, requirementsFactory)
+
+				Expect(ui.Outputs).To(ContainSubstrings(
+					[]string{"my-app"},
+					[]string{"0 of 2 instances running", "1 starting", "1 crashed"},
+					[]string{"FAILED"},
+					[]string{"Start unsuccessful"},
+				))
+			})
+		})
+
+		Context("when an app instance is starting", func() {
+			It("reports any additional details", func() {
+				displayApp := &testcmd.FakeAppDisplayer{}
+				appInstance := models.AppInstanceFields{
+					State: models.InstanceStarting,
+				}
+				appInstance2 := models.AppInstanceFields{
+					State: models.InstanceStarting,
+				}
+
+				appInstance3 := models.AppInstanceFields{
+					State: models.InstanceDown,
+				}
+				appInstance4 := models.AppInstanceFields{
+					State:   models.InstanceStarting,
+					Details: "no compatible cell",
+				}
+
+				appInstance5 := models.AppInstanceFields{
+					State:   models.InstanceStarting,
+					Details: "insufficient resources",
+				}
+				appInstance6 := models.AppInstanceFields{
+					State:   models.InstanceStarting,
+					Details: "no compatible cell",
+				}
+
+				appInstance7 := models.AppInstanceFields{
+					State: models.InstanceRunning,
+				}
+				appInstance8 := models.AppInstanceFields{
+					State: models.InstanceRunning,
+				}
+
+				defaultInstanceResponses = [][]models.AppInstanceFields{
+					[]models.AppInstanceFields{appInstance, appInstance2},
+					[]models.AppInstanceFields{appInstance3, appInstance4},
+					[]models.AppInstanceFields{appInstance5, appInstance6},
+					[]models.AppInstanceFields{appInstance7, appInstance8},
+				}
+
+				defaultInstanceErrorCodes = []string{"", ""}
+
+				ui, _, _ := startAppWithInstancesAndErrors(displayApp, defaultAppForStart, requirementsFactory)
+
+				Expect(ui.Outputs).To(ContainSubstrings(
+					[]string{"my-app"},
+					[]string{"0 of 2 instances running", "2 starting"},
+					[]string{"0 of 2 instances running", "1 starting (no compatible cell)", "1 down"},
+					[]string{"0 of 2 instances running", "2 starting (insufficient resources, no compatible cell)"},
+					[]string{"2 of 2 instances running"},
+					[]string{"App started"},
 				))
 			})
 		})

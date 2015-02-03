@@ -339,7 +339,16 @@ func newAppPresenter(app *cli.App) (presenter appPresenter) {
 				},
 			},
 		}, {
-			Name: T("PLUGIN"),
+			Name: T("ADD/REMOVE PLUGIN REPOSITORY"),
+			CommandSubGroups: [][]cmdPresenter{
+				{
+					presentCommand("add-plugin-repo"),
+					presentCommand("remove-plugin-repo"),
+					presentCommand("repo-plugins"),
+				},
+			},
+		}, {
+			Name: T("ADD/REMOVE PLUGIN"),
 			CommandSubGroups: [][]cmdPresenter{
 				{
 					presentCommand("plugins"),
@@ -348,7 +357,7 @@ func newAppPresenter(app *cli.App) (presenter appPresenter) {
 				},
 			},
 		}, {
-			Name: T("PLUGIN COMMANDS"),
+			Name: T("INSTALLED PLUGIN COMMANDS"),
 			CommandSubGroups: [][]cmdPresenter{
 				presentPluginCommands(),
 			},

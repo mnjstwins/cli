@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -277,7 +278,7 @@ func (cmd Start) waitForOneRunningInstance(app models.Application) {
 			return
 		}
 
-		if count.flapping > 0 {
+		if count.flapping > 0 || count.crashed > 0 {
 			cmd.ui.Failed(fmt.Sprintf(T("Start unsuccessful\n\nTIP: use '{{.Command}}' for more information",
 				map[string]interface{}{"Command": terminal.CommandColor(fmt.Sprintf("%s logs %s --recent", cf.Name(), app.Name))})))
 			return
@@ -288,15 +289,19 @@ func (cmd Start) waitForOneRunningInstance(app models.Application) {
 }
 
 type instanceCount struct {
-	running  int
-	starting int
-	flapping int
-	down     int
-	total    int
+	running         int
+	starting        int
+	startingDetails map[string]struct{}
+	flapping        int
+	down            int
+	crashed         int
+	total           int
 }
 
 func (cmd Start) fetchInstanceCount(appGuid string) (instanceCount, error) {
-	count := instanceCount{}
+	count := instanceCount{
+		startingDetails: make(map[string]struct{}),
+	}
 
 	instances, apiErr := cmd.appInstancesRepo.GetInstances(appGuid)
 	if apiErr != nil {
@@ -311,10 +316,15 @@ func (cmd Start) fetchInstanceCount(appGuid string) (instanceCount, error) {
 			count.running++
 		case models.InstanceStarting:
 			count.starting++
+			if inst.Details != "" {
+				count.startingDetails[inst.Details] = struct{}{}
+			}
 		case models.InstanceFlapping:
 			count.flapping++
 		case models.InstanceDown:
 			count.down++
+		case models.InstanceCrashed:
+			count.crashed++
 		}
 	}
 
@@ -326,8 +336,21 @@ func instancesDetails(count instanceCount) string {
 		map[string]interface{}{"RunningCount": count.running, "TotalCount": count.total}))}
 
 	if count.starting > 0 {
-		details = append(details, fmt.Sprintf(T("{{.StartingCount}} starting",
-			map[string]interface{}{"StartingCount": count.starting})))
+		if len(count.startingDetails) == 0 {
+			details = append(details, fmt.Sprintf(T("{{.StartingCount}} starting",
+				map[string]interface{}{"StartingCount": count.starting})))
+		} else {
+			info := []string{}
+			for d, _ := range count.startingDetails {
+				info = append(info, d)
+			}
+			sort.Strings(info)
+			details = append(details, fmt.Sprintf(T("{{.StartingCount}} starting ({{.Details}})",
+				map[string]interface{}{
+					"StartingCount": count.starting,
+					"Details":       strings.Join(info, ", "),
+				})))
+		}
 	}
 
 	if count.down > 0 {
@@ -338,6 +361,11 @@ func instancesDetails(count instanceCount) string {
 	if count.flapping > 0 {
 		details = append(details, fmt.Sprintf(T("{{.FlappingCount}} failing",
 			map[string]interface{}{"FlappingCount": count.flapping})))
+	}
+
+	if count.crashed > 0 {
+		details = append(details, fmt.Sprintf(T("{{.CrashedCount}} crashed",
+			map[string]interface{}{"CrashedCount": count.crashed})))
 	}
 
 	return strings.Join(details, ", ")

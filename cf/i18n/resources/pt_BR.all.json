@@ -175,6 +175,16 @@
       "modified": false
    },
    {
+      "id": " added as '",
+      "translation": " added as '",
+      "modified": false
+   },
+   {
+      "id": " does not exist as a repo",
+      "translation": " does not exist as a repo",
+      "modified": false
+   },
+   {
       "id": " is already started",
       "translation": " já está iniciada",
       "modified": false
@@ -190,13 +200,48 @@
       "modified": false
    },
    {
+      "id": " is not a valid url, please provide a url, e.g. http://your_repo.com",
+      "translation": " is not a valid url, please provide a url, e.g. http://your_repo.com",
+      "modified": false
+   },
+   {
+      "id": " is not responding. Please make sure it is a valid plugin repo.",
+      "translation": " is not responding. Please make sure it is a valid plugin repo.",
+      "modified": false
+   },
+   {
       "id": " not found",
       "translation": " não encontrado",
       "modified": false
    },
    {
+      "id": " removed from list of repositories",
+      "translation": " removed from list of repositories",
+      "modified": false
+   },
+   {
+      "id": "\"Plugins\" object not found in the responded data.",
+      "translation": "\"Plugins\" object not found in the responded data.",
+      "modified": false
+   },
+   {
+      "id": ") already exists.",
+      "translation": ") already exists.",
+      "modified": false
+   },
+   {
       "id": "A command line tool to interact with Cloud Foundry",
       "translation": "Uma ferramenta de linha de comando para interagir com Cloud Foundry",
+      "modified": false
+   },
+   {
+      "id": "ADD/REMOVE PLUGIN",
+      "translation": "PLUGIN",
+      "modified": true
+   },
+   {
+      "id": "ADD/REMOVE PLUGIN REPOSITORY",
+      "translation": "ADD/REMOVE PLUGIN REPOSITORY",
       "modified": false
    },
    {
@@ -247,6 +292,11 @@
    {
       "id": "Acquiring staging security group as {{.username}}",
       "translation": "Obtendo grupos de segurança para encenação como {{.username}}",
+      "modified": false
+   },
+   {
+      "id": "Add a new plugin repository",
+      "translation": "Add a new plugin repository",
       "modified": false
    },
    {
@@ -485,6 +535,11 @@
       "modified": false
    },
    {
+      "id": "CF_NAME add-plugin-repo [REPO_NAME] [URL]\n\nEXAMPLE:\n   cf add-plugin-repo PrivateRepo http://myprivaterepo.com/repo/\n",
+      "translation": "CF_NAME add-plugin-repo [REPO_NAME] [URL]\n\nEXAMPLE:\n   cf add-plugin-repo PrivateRepo http://myprivaterepo.com/repo/\n",
+      "modified": false
+   },
+   {
       "id": "CF_NAME api [URL]",
       "translation": "CF_NAME api [URL]",
       "modified": false
@@ -570,9 +625,9 @@
       "modified": false
    },
    {
-      "id": "CF_NAME create-service SERVICE PLAN SERVICE_INSTANCE\n\nEXAMPLE:\n   CF_NAME create-service cleardb spark clear-db-mine\n\nTIP:\n   Use 'CF_NAME create-user-provided-service' to make user-provided services available to cf apps",
+      "id": "CF_NAME create-service SERVICE PLAN SERVICE_INSTANCE\n\nEXAMPLE:\n   CF_NAME create-service dbaas silver mydb\n\nTIP:\n   Use 'CF_NAME create-user-provided-service' to make user-provided services available to cf apps",
       "translation": "CF_NAME create-service SERVIÇO PLANO SERVICE_INSTANCE\n\nEXEMPLO:\n   CF_NAME create-service cleardb spark clear-db-mine\n\nDICA:\n   Utilize 'CF_NAME create-user-provided-service' para fazer com que serviços fornecidos pelo usuário sejam disponíveis para apps",
-      "modified": false
+      "modified": true
    },
    {
       "id": "CF_NAME create-service-auth-token LABEL PROVIDER TOKEN",
@@ -605,7 +660,7 @@
       "modified": false
    },
    {
-      "id": "CF_NAME create-user-provided-service SERVICE_INSTANCE [-p CREDENTIALS] [-l SYSLOG-DRAIN-URL]\n\n   Pass comma separated credential parameter names to enable interactive mode:\n   CF_NAME create-user-provided-service SERVICE_INSTANCE -p \"comma, separated, parameter, names\"\n\n   Pass credential parameters as JSON to create a service non-interactively:\n   CF_NAME create-user-provided-service SERVICE_INSTANCE -p '{\"name\":\"value\",\"name\":\"value\"}'\n\nEXAMPLE:\n   CF_NAME create-user-provided-service oracle-db-mine -p \"username, password\"\n   CF_NAME create-user-provided-service oracle-db-mine -p '{\"username\":\"admin\",\"password\":\"pa55woRD\"}'\n   CF_NAME create-user-provided-service my-drain-service -l syslog://example.com\n",
+      "id": "CF_NAME create-user-provided-service SERVICE_INSTANCE [-p CREDENTIALS] [-l SYSLOG-DRAIN-URL]\n\n   Pass comma separated credential parameter names to enable interactive mode:\n   CF_NAME create-user-provided-service SERVICE_INSTANCE -p \"comma, separated, parameter, names\"\n\n   Pass credential parameters as JSON to create a service non-interactively:\n   CF_NAME create-user-provided-service SERVICE_INSTANCE -p '{\"name\":\"value\",\"name\":\"value\"}'\n\nEXAMPLE:\n   CF_NAME create-user-provided-service my-db-mine -p \"username, password\"\n   CF_NAME create-user-provided-service my-db-mine -p '{\"username\":\"admin\",\"password\":\"pa55woRD\"}'\n   CF_NAME create-user-provided-service my-drain-service -l syslog://example.com\n",
       "translation": "CF_NAME create-user-provided-service SERVICE_INSTANCE [-p CREDENTIALS] [-l SYSLOG-DRAIN-URL]\n\n   Pass comma separated credential parameter names to enable interactive mode:\n   CF_NAME create-user-provided-service SERVICE_INSTANCE -p \"comma, separated, parameter, names\"\n\n   Pass credential parameters as JSON to create a service non-interactively:\n   CF_NAME create-user-provided-service SERVICE_INSTANCE -p '{\"name\":\"value\",\"name\":\"value\"}'\n\nEXAMPLE:\n   CF_NAME create-user-provided-service oracle-db-mine -p \"username, password\"\n   CF_NAME create-user-provided-service oracle-db-mine -p '{\"username\":\"admin\",\"password\":\"pa55woRD\"}'\n   CF_NAME create-user-provided-service my-drain-service -l syslog://example.com\n",
       "modified": true
    },
@@ -795,6 +850,11 @@
       "modified": false
    },
    {
+      "id": "CF_NAME remove-plugin-repo [REPO_NAME] [URL]\n\nEXAMPLE:\n   cf remove-plugin-repo PrivateRepo\n",
+      "translation": "CF_NAME remove-plugin-repo [REPO_NAME] [URL]\n\nEXAMPLE:\n   cf remove-plugin-repo PrivateRepo\n",
+      "modified": false
+   },
+   {
       "id": "CF_NAME rename APP_NAME NEW_APP_NAME",
       "translation": "CF_NAME rename NOME-DO-APP NOVO-NOME-DO-APP",
       "modified": false
@@ -822,6 +882,11 @@
    {
       "id": "CF_NAME rename-space SPACE NEW_SPACE",
       "translation": "CF_NAME rename-space ESPAÇO NOVO-ESPAÇO",
+      "modified": false
+   },
+   {
+      "id": "CF_NAME repo-plugins\n\nEXAMPLE:\n   cf repo-plugins\n",
+      "translation": "CF_NAME repo-plugins\n\nEXAMPLE:\n   cf repo-plugins\n",
       "modified": false
    },
    {
@@ -1035,7 +1100,7 @@
       "modified": true
    },
    {
-      "id": "CF_NAME update-user-provided-service SERVICE_INSTANCE [-p CREDENTIALS] [-l SYSLOG-DRAIN-URL]'\n\nEXAMPLE:\n   CF_NAME update-user-provided-service oracle-db-mine -p '{\"username\":\"admin\",\"password\":\"pa55woRD\"}'\n   CF_NAME update-user-provided-service my-drain-service -l syslog://example.com",
+      "id": "CF_NAME update-user-provided-service SERVICE_INSTANCE [-p CREDENTIALS] [-l SYSLOG-DRAIN-URL]'\n\nEXAMPLE:\n   CF_NAME update-user-provided-service my-db-mine -p '{\"username\":\"admin\",\"password\":\"pa55woRD\"}'\n   CF_NAME update-user-provided-service my-drain-service -l syslog://example.com",
       "translation": "CF_NAME update-user-provided-service SERVICE_INSTANCE [-p CREDENTIALS] [-l SYSLOG-DRAIN-URL]'\n\nEXEMPLO:\n   CF_NAME update-user-provided-service oracle-db-mine -p '{\"usuário\":\"admin\",\"senha\":\"pa55woRD\"}'\n   CF_NAME update-user-provided-service my-drain-service -l syslog://example.com",
       "modified": true
    },
@@ -1905,6 +1970,11 @@
       "modified": false
    },
    {
+      "id": "Error processing data from server: ",
+      "translation": "Error processing data from server: ",
+      "modified": false
+   },
+   {
       "id": "Error reading manifest file:\n{{.Err}}",
       "translation": "Erro ao ler arquivo de manifesto:\n{{.Err}}",
       "modified": false
@@ -1915,8 +1985,23 @@
       "modified": false
    },
    {
+      "id": "Error reading response from",
+      "translation": "Error reading response from",
+      "modified": false
+   },
+   {
+      "id": "Error reading response from server: ",
+      "translation": "Error reading response from server: ",
+      "modified": false
+   },
+   {
       "id": "Error renaming buildpack {{.Name}}\n{{.Error}}",
       "translation": "Erro renomenado buildpack {{.Name}}\n{{.Error}}",
+      "modified": false
+   },
+   {
+      "id": "Error requesting from",
+      "translation": "Error requesting from",
       "modified": false
    },
    {
@@ -2185,6 +2270,16 @@
       "modified": false
    },
    {
+      "id": "Getting plugins from all repositories ... ",
+      "translation": "Getting plugins from all repositories ... ",
+      "modified": false
+   },
+   {
+      "id": "Getting plugins from repositories '",
+      "translation": "Getting plugins from repositories '",
+      "modified": false
+   },
+   {
       "id": "Getting quota {{.QuotaName}} info as {{.Username}}...",
       "translation": "Obtendo informações da cota {{.QuotaName}} como {{.Username}}...",
       "modified": false
@@ -2325,6 +2420,11 @@
       "modified": false
    },
    {
+      "id": "INSTALLED PLUGIN COMMANDS",
+      "translation": "PLUGIN COMMANDS",
+      "modified": true
+   },
+   {
       "id": "Ignore manifest file",
       "translation": "Ignorar arquivo de manifesto",
       "modified": false
@@ -2420,6 +2520,11 @@
       "modified": false
    },
    {
+      "id": "Invalid data from '{{.repoName}}' - plugin data does not exist",
+      "translation": "Invalid data from '{{.repoName}}' - plugin data does not exist",
+      "modified": false
+   },
+   {
       "id": "Invalid disk quota: {{.DiskQuota}}\n{{.ErrorDescription}}",
       "translation": "Cota de disco rígido inválida: {{.DiskQuota}}\n{{.ErrorDescription}}",
       "modified": false
@@ -2452,6 +2557,11 @@
    {
       "id": "Invalid instance: {{.Instance}}\nInstance must be less than {{.InstanceCount}}",
       "translation": "Instância inválida: {{.Instance}}\nO valor deverá ser menor que {{.InstanceCount}}",
+      "modified": false
+   },
+   {
+      "id": "Invalid json data from",
+      "translation": "Invalid json data from",
       "modified": false
    },
    {
@@ -2502,6 +2612,11 @@
    {
       "id": "List all apps in the target space",
       "translation": "Exibir todos os aplicativos num determinado espaço",
+      "modified": false
+   },
+   {
+      "id": "List all available plugins in all added repositories",
+      "translation": "List all available plugins in all added repositories",
       "modified": false
    },
    {
@@ -2607,6 +2722,11 @@
    {
       "id": "Log user out",
       "translation": "Desconectar usuário",
+      "modified": false
+   },
+   {
+      "id": "Logged errors:",
+      "translation": "Logged errors:",
       "modified": false
    },
    {
@@ -2955,16 +3075,6 @@
       "modified": false
    },
    {
-      "id": "PLUGIN",
-      "translation": "PLUGIN",
-      "modified": false
-   },
-   {
-      "id": "PLUGIN COMMANDS",
-      "translation": "PLUGIN COMMANDS",
-      "modified": false
-   },
-   {
       "id": "Paid service plans",
       "translation": "Planos de serviços pagos",
       "modified": false
@@ -3062,6 +3172,11 @@
    {
       "id": "Plugin name {{.PluginName}} is already taken",
       "translation": "Plugin name {{.PluginName}} is already taken",
+      "modified": false
+   },
+   {
+      "id": "Plugin repo named \"{{.repoName}}\" already exists, please use another name.",
+      "translation": "Plugin repo named \"{{.repoName}}\" already exists, please use another name.",
       "modified": false
    },
    {
@@ -3195,6 +3310,11 @@
       "modified": false
    },
    {
+      "id": "Remove a plugin repository",
+      "translation": "Remove a plugin repository",
+      "modified": false
+   },
+   {
       "id": "Remove a space role from a user",
       "translation": "Remover uma função do espaço de um usuário",
       "modified": false
@@ -3302,6 +3422,16 @@
    {
       "id": "Renaming space {{.OldSpaceName}} to {{.NewSpaceName}} in org {{.OrgName}} as {{.CurrentUser}}...",
       "translation": "Renomenado espaço {{.OldSpaceName}} para {{.NewSpaceName}} na org {{.OrgName}} como {{.CurrentUser}}...",
+      "modified": false
+   },
+   {
+      "id": "Repo Name - List plugins from just this repository",
+      "translation": "Repo Name - List plugins from just this repository",
+      "modified": false
+   },
+   {
+      "id": "Repository: ",
+      "translation": "Repository: ",
       "modified": false
    },
    {
@@ -3870,6 +4000,11 @@
       "modified": false
    },
    {
+      "id": "There is an error performing request on '{{.repoUrl}}': ",
+      "translation": "There is an error performing request on '{{.repoUrl}}':",
+      "modified": true
+   },
+   {
       "id": "This domain is shared across all orgs.\nDeleting it will remove all associated routes, and will make any app with this domain unreachable.\nAre you sure you want to delete the domain {{.DomainName}}? ",
       "translation": "Este domínio é compartilhado com todas as organizações.\nRemovendo-o irá remover todas as rotas associadas, e fará qualquer aplicativo inacessivle através deste domínio. Tem certeza que deseja remover domínio {{.DomainName}}?",
       "modified": false
@@ -4350,8 +4485,28 @@
       "modified": false
    },
    {
+      "id": "crashed",
+      "translation": "crashed",
+      "modified": false
+   },
+   {
       "id": "crashing",
       "translation": "falhando",
+      "modified": false
+   },
+   {
+      "id": "create failed",
+      "translation": "create failed",
+      "modified": false
+   },
+   {
+      "id": "create in progress",
+      "translation": "create in progress",
+      "modified": false
+   },
+   {
+      "id": "create succeeded",
+      "translation": "create succeeded",
       "modified": false
    },
    {
@@ -4585,6 +4740,11 @@
       "modified": false
    },
    {
+      "id": "repo-plugins",
+      "translation": "repo-plugins",
+      "modified": false
+   },
+   {
       "id": "requested state",
       "translation": "estado requerido",
       "modified": false
@@ -4750,6 +4910,11 @@
       "modified": false
    },
    {
+      "id": "version",
+      "translation": "version",
+      "modified": false
+   },
+   {
       "id": "write default values to the config",
       "translation": "Gravar valores padrão para configuração",
       "modified": false
@@ -4782,6 +4947,11 @@
    {
       "id": "{{.CountOfServices}} migrated.",
       "translation": "{{.CountOfServices}} migrado.",
+      "modified": false
+   },
+   {
+      "id": "{{.CrashedCount}} crashed",
+      "translation": "{{.CrashedCount}} crashed",
       "modified": false
    },
    {
@@ -4850,6 +5020,11 @@
       "modified": false
    },
    {
+      "id": "{{.StartingCount}} starting ({{.Details}})",
+      "translation": "{{.StartingCount}} starting ({{.Details}})",
+      "modified": false
+   },
+   {
       "id": "{{.Usage}} {{.FormattedMemory}} x {{.InstanceCount}} instances",
       "translation": "{{.Usage}} {{.FormattedMemory}} x {{.InstanceCount}} instâncias",
       "modified": false
@@ -4867,6 +5042,11 @@
    {
       "id": "state",
       "translation": "estado",
+      "modified": false
+   },
+   {
+      "id": "details",
+      "translation": "details",
       "modified": false
    }
 ]
